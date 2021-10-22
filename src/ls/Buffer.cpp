@@ -5,7 +5,20 @@
 namespace ls {
 
 
-Buffer::Buffer(int maxBufferSize) : buffer(new char[maxBufferSize + 1]), offset(0), buffersize(0), maxBufferSize(maxBufferSize) {}
+Buffer::Buffer(std::string &data) : data(std::move(data)), buffer((char *)this -> data.c_str()), offset(0), buffersize(this -> data.size()), maxBufferSize(this -> data.size())
+{
+
+}
+
+Buffer::Buffer(int maxBufferSize) : data(std::string(maxBufferSize, '\0')), buffer((char *)data.c_str()), offset(0), buffersize(0), maxBufferSize(maxBufferSize)
+{
+
+}
+
+std::string &Buffer::getData()
+{
+	return data;
+}
 
 int Buffer::size()
 {

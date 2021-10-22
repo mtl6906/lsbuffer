@@ -17,5 +17,9 @@ int main()
 	cout << text << endl;
 //	Buffer数据为空后, 调用clear将offset和buffersize置0
 	buffer.clear();
+//	以string构造
+	string t1 = "123";
+	Buffer buffer1(t1);
+	cout << buffer1.size() << endl;
 	return 0;
 }

@@ -7,12 +7,14 @@ namespace ls
 {
 	class Buffer
 	{
+		std::string data;
 		char *buffer;
 		int offset;
 		int buffersize;
 		int maxBufferSize;
 		public:
 			Buffer(int maxBufferSize = 1 << 20);
+			Buffer(std::string &data);
 			int push(const char *data, int len);
 			int push(Buffer &o, int len);
 			int push(const std::string &data);
@@ -31,6 +33,7 @@ namespace ls
 			int moveOffset(int n);
 			int clearWhiteSpace(int len);
 			void clear();
+			std::string &getData();
 	};
 }
 
